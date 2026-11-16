@@ -4,7 +4,7 @@ import json, urllib.request, pathlib, re, sys
 BASE="https://raw.githubusercontent.com/recepyagmur/EnglishPractice/main/app/content/vocab/"
 def fetch(name):
     request=urllib.request.Request(BASE+name,headers={"User-Agent":"Kelime2000-build/3"})
-    with urllib.request.urlopen(request,timeout=45) as response:
+    with urllib.request.urlopen(request,timeout=60) as response:
         return json.load(response)
 ranked=fetch("top3000.json")["words"]
 lookup={}
@@ -20,7 +20,7 @@ for item in sorted(ranked,key=lambda x:x["rank"]):
     if not info or key in seen: continue
     tr=info["tr"].strip().replace("|","/").replace("\n"," ")
     ipa=info.get("ipa","").strip().replace("|","/")
-    if not tr or not re.search(r"[a-zA-Z]",en): continue
+    if not tr or not re.fullmatch(r"[A-Za-z][A-Za-z '-]*",en): continue
     result.append((en,ipa,tr));seen.add(key)
     if len(result)==2000:break
 if len(result)!=2000:
