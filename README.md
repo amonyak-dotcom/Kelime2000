@@ -1,25 +1,9 @@
-# Kelime 2000 — Android kaynak projesi
+# Kelime2000 V3 — 2000 kelime
 
-Android Studio ile `Kelime2000` klasörünü açın. Gradle senkronizasyonundan sonra **Build > Build APK(s)** seçin. APK `app/build/outputs/apk/debug/app-debug.apk` yolunda oluşur.
+GitHub Actions derleme sırasında NGSL sıklık sıralaması ve CEFR-J Türkçe karşılıklarıyla **tam 2000 benzersiz kelime** üretir ve APK içine çevrimdışı gömer. Kaynak dosyalar `tools/generate_words.py` tarafından indirilir; derleme için internet gerekir, APK çalışırken gerekmez. Eğer 2000 eşleşme bulunamazsa derleme hata verir; eksik listeyle başarı göstermez.
 
-## Özellikler
-- Her soruda iki Türkçe cevap, 3 saniyelik sayaç
-- Doğru cevapta anında sonraki soru
-- Yanlış/PASS/süre aşımında doğru cevabı 4 saniye gösterme
-- İngilizce kelime, yaklaşık Türkçe okunuş ve Android TTS ile telaffuz
-- Kategori içe aktarma; yerel depolama
-- Soru formatı panoya kopyalama
-- Sonuç ekranı
+10 bölüm x 200 kelime; A/B harfleri yok, büyük iki seçenek, PASS, 3 saniye süre, yanlış/PASS/süre aşımında 4 saniye cevap gösterimi, sağa kaydırarak kategori bazında Tekrar.
 
-## İçe aktarma formatı
-```
-KATEGORI: Günlük Hayat
-borrow|borov|Ödünç almak
-lend|lend|Ödünç vermek
-```
+**Veri kaynakları:** New General Service List 1.2 (CC BY-SA 4.0) ve CEFR-J Wordlist 1.5; Türkçe anlamlar recepyagmur/EnglishPractice derlemesinden. Kaynak ve lisanslar için https://github.com/recepyagmur/EnglishPractice/blob/main/app/content/vocab/README.md adresine bakın. Bu liste NGSL sırasındaki Türkçe karşılığı bulunabilen ilk 2000 kelimedir.
 
-## Mevcut sınırlamalar
-- İlk pakette **2000 değil, 175 civarında örnek kelime** vardır. 2000 kelimelik doğrulanmış frekans listesi ve Türkçe karşılıkları henüz eklenmedi.
-- Yakın anlamlı çeldiriciler bazı yaygın kelime çiftleri için tanımlıdır. Diğerlerinde aynı kategoriden rastgele çeldirici kullanılır. Bu nedenle bütün şıkların birbirine yakın olması henüz garanti edilmez.
-- Yanlış kelimeleri kalıcı tekrar havuzuna ekleme henüz uygulanmadı.
-- Bu çalışma ortamında Android SDK/Gradle bulunmadığından APK derlenemedi; kaynak proje oluşturuldu.
+**Not:** Yanlış şık seçimi bazı sözcüklerde yeterince yakın olmayabilir; otomatik benzerlik ve belirli elle tanımlı çiftler kullanılır.
